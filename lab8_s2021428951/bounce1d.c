@@ -16,18 +16,22 @@ int main()
     int ndelay;
     int c;
     void move_msg(int);
+
     initscr();
     crmode();
     noecho();
     clear();
+
     row = 10;
     col = 0;
     dir = 1;
     delay = 200;
+
     move(row, col);
     addstr(MESSAGE);
     signal(SIGALRM, move_msg);
     set_ticker(delay);
+
     while (1)
     {
         ndelay = 0;
@@ -55,6 +59,7 @@ void move_msg(int signum)
     move(row, col);
     addstr(MESSAGE);
     refresh();
+
     if (dir == -1 && col <= 0)
     {
         dir = 1;
